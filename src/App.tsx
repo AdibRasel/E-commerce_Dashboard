@@ -1,19 +1,34 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import "./App.css"
 
+import "bootstrap/dist/css/bootstrap.min.css"
+
+
+import Dashboard from './Pages/Dashboard/Dashboard'
+import NotFound from './Utility/NotFound'
+import Header from './Components/Header/Header'
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
+    <BrowserRouter>
 
-      <div>
-        <h1>Dashboard</h1>
-      </div>
+    
+      <Header />
 
 
-    </>
+      <Routes>
+        {/* Page not found route */}
+        <Route path="*" element={<NotFound />} />
+        
+        {/* Route Start  */}
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        
+        
+        {/* Route End */}
+      </Routes>
+    </BrowserRouter>
   )
 }
 
